@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="article"
+            type="com.example.appcentnewsapp.model.Article" />
+        <variable
+            name="listener"
+            type="com.example.appcentnewsapp.adapter.ItemClickListener" />
+        <variable
+            name="position"
+            type="String" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:cardCornerRadius="15dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/searchItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:onClick="@{listener::onSearchItemCLicked}"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/newsImage"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:padding="5dp"
+                android:src="@drawable/appcentnewsapp"
+                android:getImage="@{article.urlToImage}"
+                app:civ_border_color="#080909"
+                app:civ_border_width="2dp" />
+            <TextView
+                android:id="@+id/index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{position}"
+                android:visibility="gone">
+
+            </TextView>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/newsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                   android:text="@{article.title}"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/newsDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@{article.description}"
+                    android:textStyle="italic"
+                    android:scrollHorizontally = "true"
+                    android:minLines = "2"
+                    android:maxLines = "2"
+                    android:ellipsize="end">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

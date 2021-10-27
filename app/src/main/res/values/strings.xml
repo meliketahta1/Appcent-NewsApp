@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Appcent NewsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invitation">Invitation</string>
+    <string name="invite_message">Hey, look at this article!</string>
+    <string name="share">Share</string>
+
+</resources>

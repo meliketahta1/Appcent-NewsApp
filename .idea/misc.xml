@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable-v24/ic_list.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/custom_button.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.128125" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.14375" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/ic_like.xml" value="0.1703125" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/drawable/ic_upload.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/activity_main.xml" value="0.121875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/activity_splash.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/custom_layout.xml" value="0.15625" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/favorite_article_item.xml" value="0.13854166666666667" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/fragment_favorite.xml" value="0.264" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/fragment_search.xml" value="0.2" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/fragment_source.xml" value="0.121875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/layout/search_item.xml" value="0.2265625" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.121875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/appcent/app/src/main/res/menu/support_action_bar_menu.xml" value="0.15833333333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

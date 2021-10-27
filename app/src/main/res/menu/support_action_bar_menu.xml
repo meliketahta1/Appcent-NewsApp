@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/favIcon"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="fav" />
+    <item
+        android:id="@+id/shareIcon"
+        android:icon="@drawable/common_google_signin_btn_icon_dark_normal"
+        android:title="share" />
+
+</menu>
