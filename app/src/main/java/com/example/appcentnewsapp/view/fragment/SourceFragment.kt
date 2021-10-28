@@ -33,15 +33,13 @@ class SourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val db= ArticleDatabase.invoke(requireContext())
+        val db = ArticleDatabase.invoke(requireContext())
         val newsRepository = Repository(db)
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
 
-        dataBinding.article=TransferArticle.article
-
-
-
+        dataBinding.article = TransferArticle.article
 
 
     }

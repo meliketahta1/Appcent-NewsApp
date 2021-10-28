@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="article"
             type="com.example.appcentnewsapp.model.Article" />
+
         <variable
             name="listener"
             type="com.example.appcentnewsapp.adapter.ItemClickListener" />
+
         <variable
             name="deleteListener"
             type="com.example.appcentnewsapp.adapter.DeleteButtonClickListener" />
+
         <variable
             name="position"
             type="String" />
@@ -21,42 +26,42 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
         android:layout_margin="10dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:cardCornerRadius="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
             android:onClick="@{listener::onSearchItemCLicked}"
-            >
-            <ImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical">
+
+            <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/favRocketImage"
                 android:layout_width="240dp"
                 android:layout_height="140dp"
-                android:src="@drawable/appcentnewsapp"
-                android:padding="16dp"
                 android:layout_weight="8"
-                android:loadImage="@{article.urlToImage}"/>
+                android:loadImage="@{article.urlToImage}"
+                android:padding="16dp"
+                android:src="@drawable/appcentnewsapp" />
+
             <TextView
                 android:id="@+id/favRocketNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@{article.title}"
-                android:textStyle="bold"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:layout_weight="1">
-            </TextView>
+                android:textSize="16sp"
+                android:textStyle="bold"></TextView>
+
             <TextView
                 android:id="@+id/index"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{position}"
-                android:visibility="gone">
-            </TextView>
+                android:visibility="gone"></TextView>
 
 
         </LinearLayout>

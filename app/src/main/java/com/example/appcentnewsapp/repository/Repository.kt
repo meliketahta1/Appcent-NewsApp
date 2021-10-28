@@ -8,19 +8,15 @@ import com.example.appcentnewsapp.service.NewsApiService
 class Repository(val roomDb: ArticleDatabase) {
 
     suspend fun searchNews(searchQuery: String, pageNumber: Int) =
-        NewsApiService.api.searchForNews(searchQuery,pageNumber)
+        NewsApiService.api.searchForNews(searchQuery, pageNumber)
 
-    fun addFavori(article: Article) =roomDb.articlelDao().insertArticle(article)
+    fun addFavori(article: Article) = roomDb.articlelDao().insertArticle(article)
 
-    suspend fun getFavoriteArticles() =roomDb.articlelDao().getAllArticles()
+    suspend fun getFavoriteArticles() = roomDb.articlelDao().getAllArticles()
 
-    fun getArticle(url:String) = roomDb.articlelDao().getArticle(url)
+    fun getArticle(url: String) = roomDb.articlelDao().getArticle(url)
 
     fun deleteArticle() = roomDb.articlelDao().deleteArticle()
-
-
-
-
 
 
 }

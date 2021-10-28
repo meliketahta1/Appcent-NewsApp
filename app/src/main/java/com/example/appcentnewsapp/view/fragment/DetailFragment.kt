@@ -27,7 +27,7 @@ import java.lang.StringBuilder
 class DetailFragment : Fragment() {
     private lateinit var viewModel: SearchViewModel
     private lateinit var dataBinding: FragmentDetailBindingImpl
-    private lateinit var articleDetail:Article
+    private lateinit var articleDetail: Article
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,14 +39,15 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val db= ArticleDatabase.invoke(requireContext())
+        val db = ArticleDatabase.invoke(requireContext())
         val newsRepository = Repository(db)
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
 
 
-        dataBinding.article=TransferArticle.article
-        iv_share.setOnClickListener{
+        dataBinding.article = TransferArticle.article
+        iv_share.setOnClickListener {
             it.context.sendInvite(TransferArticle.article?.url.toString())
         }
         bt_goWeb.setOnClickListener {
@@ -54,18 +55,25 @@ class DetailFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        iv_favorite.setOnClickListener{
-           if ( viewModel.repository.getArticle(TransferArticle.article?.url.toString())!=null) {
-                Toast.makeText(requireContext(),"You have already add this article to your favorite list..",Toast.LENGTH_LONG).show()
-            }
-            else{
-               TransferArticle.article?.let {
-                       it1 -> viewModel.repository.addFavori(it1)
-                   val snack = Snackbar.make(it,"You have added the article to the your favorite list.",Snackbar.LENGTH_LONG)
-                   snack.show()
+        iv_favorite.setOnClickListener {
+            if (viewModel.repository.getArticle(TransferArticle.article?.url.toString()) != null) {
+                Toast.makeText(
+                    requireContext(),
+                    "You have already add this article to your favorite list..",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                TransferArticle.article?.let { it1 ->
+                    viewModel.repository.addFavori(it1)
+                    val snack = Snackbar.make(
+                        it,
+                        "You have added the article to the your favorite list.",
+                        Snackbar.LENGTH_LONG
+                    )
+                    snack.show()
 
-               }
-           }
+                }
+            }
 
         }
 
@@ -74,7 +82,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.support_action_bar_menu,menu)
+        inflater.inflate(R.menu.support_action_bar_menu, menu)
     }
 
 

@@ -32,11 +32,11 @@
             android:onClick="@{listener::onSearchItemCLicked}"
             >
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/newsImage"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:padding="5dp"
                 android:src="@drawable/appcentnewsapp"
                 android:getImage="@{article.urlToImage}"

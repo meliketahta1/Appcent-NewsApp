@@ -14,58 +14,51 @@ import com.example.appcentnewsapp.view.fragment.FavoriteFragmentDirections
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class SearchViewModel(val repository: Repository): ViewModel() {
+class SearchViewModel(val repository: Repository) : ViewModel() {
 
-    val searchNews : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    val favoriteArticles : MutableLiveData<List<Article>> = MutableLiveData()
-    var searchNewsPage = 1
-    var searchNewsResponse: NewsResponse? = null
+    val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    val favoriteArticles: MutableLiveData<List<Article>> = MutableLiveData()
+
+    var page = 1
+    var searchResponse: NewsResponse? = null
     var progressBar: MutableLiveData<Boolean> = MutableLiveData()
 
 
-
-
-
     fun searchNews(searchQuery: String) = viewModelScope.launch {
-        searchNews.postValue(Resource.Loading())
-        progressBar.value=true
-        val response = repository.searchNews(searchQuery,searchNewsPage)
-        searchNews.postValue(handleSearchNewsResponse(response))
+        news.postValue(Resource.Loading())
+        progressBar.value = true
+        val response = repository.searchNews(searchQuery, page)
+        news.postValue(handleSearchNewsResponse(response))
 
     }
 
 
+    fun getArticles() = favoriteArticles?.value?.size
 
-    fun getArticles()= favoriteArticles?.value?.size
+    fun getFavoriteArticles() {
+        viewModelScope.launch {
+            favoriteArticles.value = repository.getFavoriteArticles()
 
-    fun getFavoriteArticles(){
-        viewModelScope.launch{
-            favoriteArticles.value=repository.getFavoriteArticles()
         }
 
     }
 
 
-    private fun handleSearchNewsResponse(response: Response<NewsResponse>) : Resource<NewsResponse>{
-        if(response.isSuccessful){
-            response.body()?.let {resultResponse ->
-                searchNewsPage++
-                if(searchNewsResponse == null){
-                    searchNewsResponse = resultResponse
-                }else{
-                    val oldArticles = resultResponse?.articles
-                    val newArticles = resultResponse.articles
-                    oldArticles?.addAll(newArticles)
+    private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { Response ->
+                if (searchResponse == null) {
+                    searchResponse = Response
                 }
-                progressBar.value=false
+                progressBar.value = false
 
-                return Resource.Succes(searchNewsResponse ?: resultResponse)
+                return Resource.Succes(searchResponse ?: Response)
             }
         }
         return Resource.Error(response.message())
     }
 
-    fun onEmptyIconClick(view: View){
+    fun onEmptyIconClick(view: View) {
         val action = FavoriteFragmentDirections.actionFavoriteFragmentToSearchFragment()
         Navigation.findNavController(view).navigate(action)
     }

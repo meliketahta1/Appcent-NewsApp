@@ -68,7 +68,7 @@
                 android:id="@+id/iv_author"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/ic_upload"
+                android:src="@drawable/ic_view_details"
                 android:tintMode="@color/black" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:text="10.12.2021"/>
+                android:text="@{article.publishedAt}"/>
 
         </LinearLayout>
 
@@ -122,9 +122,8 @@
             android:layout_width="120dp"
             android:layout_height="35dp"
             android:background="@drawable/custom_button"
-            android:textAlignment="center"
-            android:text="News Source"
-            android:gravity="center_horizontal"
+            android:text="@string/news_source"
+            android:gravity="center"
             android:layout_gravity="center"
             />
 

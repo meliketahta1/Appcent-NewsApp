@@ -31,7 +31,8 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_favorite, container, false)
+        dataBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_favorite, container, false)
 
         return dataBinding.root
     }
@@ -41,17 +42,17 @@ class FavoriteFragment : Fragment() {
         setViewModel()
         setRecyclerView()
         viewModel.getFavoriteArticles()
-        dataBinding.viewModel=viewModel
-        deleteIV.setOnClickListener{
+        dataBinding.viewModel = viewModel
+        deleteIV.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Sure?")
             builder.setMessage("You're about to delete all articles in your favorite list. Are you sure ?")
 
 
             builder.setPositiveButton("YES") { dialog, which ->
-               viewModel.repository.deleteArticle()
-                favoriteArticleIV.visibility=View.GONE
-                progressBarFV.visibility=View.VISIBLE
+                viewModel.repository.deleteArticle()
+                favoriteArticleIV.visibility = View.GONE
+                progressBarFV.visibility = View.VISIBLE
                 observeLiveData()
             }
 
@@ -67,30 +68,30 @@ class FavoriteFragment : Fragment() {
 
     }
 
-    fun setViewModel(){
-        val db= ArticleDatabase.invoke(requireContext())
+    fun setViewModel() {
+        val db = ArticleDatabase.invoke(requireContext())
         val newsRepository = Repository(db)
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(SearchViewModel::class.java)
     }
 
-    fun setRecyclerView(){
-        favoriteArticleIV.layoutManager= LinearLayoutManager(context)
-        adapter = FavoriteAdapter(arrayListOf(),viewModel)
+    fun setRecyclerView() {
+        favoriteArticleIV.layoutManager = LinearLayoutManager(context)
+        adapter = FavoriteAdapter(arrayListOf(), viewModel)
         favoriteArticleIV.adapter = adapter
     }
 
 
-    fun observeLiveData(){
-        viewModel.favoriteArticles.observe(viewLifecycleOwner,{articles->
-        articles?.let { response->
-            progressBarFV.visibility=View.GONE
-            adapter.setData(response)
-        }
-    })
+    fun observeLiveData() {
+        viewModel.favoriteArticles.observe(viewLifecycleOwner, { articles ->
+            articles?.let { response ->
+                progressBarFV.visibility = View.GONE
+                adapter.setData(response)
+            }
+        })
 
     }
 
-    
 
 }

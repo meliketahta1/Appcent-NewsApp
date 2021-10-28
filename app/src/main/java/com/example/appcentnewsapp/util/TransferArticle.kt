@@ -4,5 +4,5 @@ import com.example.appcentnewsapp.model.Article
 
 object TransferArticle {
 
-    var article:Article?=null
+    var article: Article? = null
 }

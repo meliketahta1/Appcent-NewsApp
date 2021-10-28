@@ -17,10 +17,11 @@ import com.example.appcentnewsapp.view.fragment.SearchFragmentDirections
 import com.example.appcentnewsapp.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_item.view.*
 
-class SearchAdapter(val articleList: ArrayList<Article>, var viewModel: SearchViewModel) : RecyclerView.Adapter<SearchAdapter.ArticleViewHolder>(),ItemClickListener{
+class SearchAdapter(val articleList: ArrayList<Article>, var viewModel: SearchViewModel) :
+    RecyclerView.Adapter<SearchAdapter.ArticleViewHolder>(), ItemClickListener {
 
 
-    private var dataSet = articleList
+    private var dataSet = arrayListOf<Article>()
 
     class ArticleViewHolder(var view: SearchItemBindingImpl) : RecyclerView.ViewHolder(view.root) {
     }
@@ -28,14 +29,19 @@ class SearchAdapter(val articleList: ArrayList<Article>, var viewModel: SearchVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<SearchItemBindingImpl>(inflater, R.layout.search_item, parent, false)
+        val view = DataBindingUtil.inflate<SearchItemBindingImpl>(
+            inflater,
+            R.layout.search_item,
+            parent,
+            false
+        )
         return ArticleViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.view.article = dataSet[position]
-        holder.view.listener=this
-        holder.view.position=position.toString()
+        holder.view.listener = this
+        holder.view.position = position.toString()
         holder.setIsRecyclable(false);
     }
 
@@ -51,8 +57,9 @@ class SearchAdapter(val articleList: ArrayList<Article>, var viewModel: SearchVi
         diffResults.dispatchUpdatesTo(this)
 
     }
+
     override fun onSearchItemCLicked(v: View) {
-        TransferArticle.article =dataSet[v.index.text.toString().toInt()]
+        TransferArticle.article = dataSet[v.index.text.toString().toInt()]
         val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment()
         Navigation.findNavController(v).navigate(action)
     }

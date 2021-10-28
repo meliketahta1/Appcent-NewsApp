@@ -5,5 +5,16 @@
     <string name="invitation">Invitation</string>
     <string name="invite_message">Hey, look at this article!</string>
     <string name="share">Share</string>
+    <string name="news_source">News Source</string>
+    <string name="no_favorites_articles_yet">No favorites article yet</string>
+    <string name="click_the_icon_to_search_news">Click the icon to search news</string>
+    <string name="there_is_no_internet_connection">There is no internet connection</string>
+
+
+
+
+
+
+
 
 </resources>

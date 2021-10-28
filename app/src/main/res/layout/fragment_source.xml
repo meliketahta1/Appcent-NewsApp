@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<data>
-    <variable
-        name="article"
-        type="com.example.appcentnewsapp.model.Article" />
-</data>
+
+    <data>
+
+        <variable
+            name="article"
+            type="com.example.appcentnewsapp.model.Article" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.SourceFragment"
-        android:backgroundTint="@color/black">
+        android:backgroundTint="@color/black"
+        tools:context=".view.fragment.SourceFragment">
 
         <WebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-           android:loadWebPage="@{article.url}"
+            android:loadWebPage="@{article.url}"
             android:padding="10dp">
 
         </WebView>

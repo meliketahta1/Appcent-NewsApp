@@ -17,13 +17,13 @@ import com.example.appcentnewsapp.R
 
 
 fun View.closeKeyboard() {
-        val inputMethodManager =
-            this.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(this.windowToken, 0)
-    }
+    val inputMethodManager =
+        this.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(this.windowToken, 0)
+}
 
 @BindingAdapter("android:loadImage")
- fun  loadImage(view:ImageView,url: String?) {
+fun loadImage(view: ImageView, url: String?) {
     val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
     Glide.with(view).applyDefaultRequestOptions(requestOptions)
         .load(url)
@@ -31,8 +31,9 @@ fun View.closeKeyboard() {
         .thumbnail(0.25f)
         .into(view)
 }
+
 @SuppressLint("StringFormatInvalid")
-fun Context.sendInvite(url:String ) {
+fun Context.sendInvite(url: String) {
     val shareIntent = Intent()
     shareIntent.action = Intent.ACTION_SEND
     shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.invitation))
@@ -46,7 +47,7 @@ fun Context.sendInvite(url:String ) {
 }
 
 @BindingAdapter("android:loadWebPage")
-fun startWebView(webView:WebView,url: String) {
+fun startWebView(webView: WebView, url: String) {
 
     webView.webViewClient = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(
@@ -73,26 +74,29 @@ fun startWebView(webView:WebView,url: String) {
 }
 
 
-fun ImageView.downloadFromUrl(url:String?,progressDrawable: CircularProgressDrawable){
-    val options= RequestOptions()
-        .placeholder(progressDrawable
+fun ImageView.downloadFromUrl(url: String?, progressDrawable: CircularProgressDrawable) {
+    val options = RequestOptions()
+        .placeholder(
+            progressDrawable
         )
-        .error(R.mipmap.ic_launcher)
+        .error(R.drawable.appcentnewsapp)
     Glide.with(context)
         .setDefaultRequestOptions(options)
         .load(url)
         .into(this)
 
 }
-fun placeHolderProgressBar(context:Context):CircularProgressDrawable{
+
+fun placeHolderProgressBar(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
-        strokeWidth=8f
-        centerRadius=40f
+        strokeWidth = 8f
+        centerRadius = 40f
         start()
     }
 }
+
 @BindingAdapter("android:getImage")
-fun getImage(view:ImageView,url:String?) {
+fun getImage(view: ImageView, url: String?) {
     if (url?.length != 0 && url != null) {
         view.downloadFromUrl(url, placeHolderProgressBar(view.context))
     }

@@ -15,24 +15,31 @@ import com.example.appcentnewsapp.view.fragment.FavoriteFragmentDirections
 import com.example.appcentnewsapp.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_item.view.*
 
-class FavoriteAdapter(val articleList: ArrayList<Article>, var viewModel: SearchViewModel) : RecyclerView.Adapter<FavoriteAdapter.FavoriteArticleViewHolder>(),ItemClickListener{
+class FavoriteAdapter(val articleList: ArrayList<Article>, var viewModel: SearchViewModel) :
+    RecyclerView.Adapter<FavoriteAdapter.FavoriteArticleViewHolder>(), ItemClickListener {
 
 
     private var dataSet = articleList
 
-    class FavoriteArticleViewHolder(var view: FavoriteArticleItemBindingImpl) : RecyclerView.ViewHolder(view.root) {
+    class FavoriteArticleViewHolder(var view: FavoriteArticleItemBindingImpl) :
+        RecyclerView.ViewHolder(view.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteArticleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<FavoriteArticleItemBindingImpl>(inflater, R.layout.favorite_article_item, parent, false)
+        val view = DataBindingUtil.inflate<FavoriteArticleItemBindingImpl>(
+            inflater,
+            R.layout.favorite_article_item,
+            parent,
+            false
+        )
         return FavoriteArticleViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: FavoriteArticleViewHolder, position: Int) {
         holder.view.article = dataSet[position]
-        holder.view.listener=this
-        holder.view.position=position.toString()
+        holder.view.listener = this
+        holder.view.position = position.toString()
         holder.setIsRecyclable(false);
     }
 
@@ -49,13 +56,10 @@ class FavoriteAdapter(val articleList: ArrayList<Article>, var viewModel: Search
     }
 
     override fun onSearchItemCLicked(v: View) {
-        TransferArticle.article =dataSet[v.index.text.toString().toInt()]
+        TransferArticle.article = dataSet[v.index.text.toString().toInt()]
         val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment()
         Navigation.findNavController(v).navigate(action)
     }
-
-
-
 
 
 }
